@@ -1,8 +1,5 @@
 const btn = [...document.querySelectorAll(".btn")]
 
-// TODO ARRUMAR O PROBLEMA DE DUPLO CLICK NO BOTÃO
-// ADICIONAR ALARMES
-//
 
 for(let i = 0; i < btn.length; i++){
     btn[i].addEventListener('click', ()=>{
