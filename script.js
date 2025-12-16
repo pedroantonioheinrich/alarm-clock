@@ -1,4 +1,3 @@
-const btn = [...document.querySelectorAll(".btn")]
 
 const btn25 = document.getElementById("btn-25")
 const btn5 = document.getElementById("btn-5")
@@ -18,6 +17,12 @@ btn25.addEventListener('click', ()=>{
     btn15.disabled = true
 
     if(isClicked25){
+        btn25.style.backgroundColor = 'grey'
+        btn25.style.cursor = 'wait'
+        btn5.style.backgroundColor = 'grey'
+        btn5.style.cursor = 'wait'
+        btn15.style.backgroundColor = 'grey'
+        btn15.style.cursor = 'wait'
         const focusTime = document.querySelector("#minute")
         const seconds = document.querySelector("#second")
         let minute25 = 24
@@ -49,6 +54,9 @@ btn25.addEventListener('click', ()=>{
                     btn25.disabled = false
                     btn5.disabled = false
                     btn15.disabled = false
+                    isClicked5 = false
+                    isClicked25 = false
+                    isClicked15 = false
                 }
             }
         }, 1000)
@@ -64,6 +72,12 @@ btn5.addEventListener('click', ()=>{
     btn15.disabled = true
 
     if(isClicked5){
+        btn25.style.backgroundColor = 'grey'
+        btn25.style.cursor = 'wait'
+        btn5.style.backgroundColor = 'grey'
+        btn5.style.cursor = 'wait'
+        btn15.style.backgroundColor = 'grey'
+        btn15.style.cursor = 'wait'
         const focusTime = document.querySelector("#minute")
         const seconds = document.querySelector("#second")
         let minute5 = 4
@@ -95,6 +109,9 @@ btn5.addEventListener('click', ()=>{
                     btn25.disabled = false
                     btn5.disabled = false
                     btn15.disabled = false
+                    isClicked5 = false
+                    isClicked25 = false
+                    isClicked15 = false
                 }
             }
         }, 1000)
@@ -110,6 +127,12 @@ btn15.addEventListener('click', ()=>{
     btn15.disabled = true
 
     if(isClicked15){
+        btn25.style.backgroundColor = 'grey'
+        btn25.style.cursor = 'wait'
+        btn5.style.backgroundColor = 'grey'
+        btn5.style.cursor = 'wait'
+        btn15.style.backgroundColor = 'grey'
+        btn15.style.cursor = 'wait'
         const focusTime = document.querySelector("#minute")
         const seconds = document.querySelector("#second")
         let minute15 = 14
@@ -141,6 +164,9 @@ btn15.addEventListener('click', ()=>{
                     btn25.disabled = false
                     btn5.disabled = false
                     btn15.disabled = false
+                    isClicked5 = false
+                    isClicked25 = false
+                    isClicked15 = false
                 }
             }
         }, 1000)
