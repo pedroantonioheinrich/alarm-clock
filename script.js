@@ -1,107 +1,151 @@
 const btn = [...document.querySelectorAll(".btn")]
 
+const btn25 = document.getElementById("btn-25")
+const btn5 = document.getElementById("btn-5")
+const btn15 = document.getElementById("btn-15")
 
-for(let i = 0; i < btn.length; i++){
-    btn[i].addEventListener('click', ()=>{
-        if(btn[i].value === '25'){
-            const focusTime = document.querySelector("#minute")
-            const seconds = document.querySelector("#second")
-            let minute25 = 24
-            let second = 59
+let isClicked25 = false
+let isClicked5 = false
+let isClicked15 = false
 
-            const secondInterval = setInterval(()=>{
-                second--
-                if(minute25 >= 0 && minute25 < 10){
-                        focusTime.textContent = `0${minute25}`
-                    }else{
-                        focusTime.textContent = minute25
-                    }
-                if(second >= 0 && second < 10){
-                        seconds.textContent = `0${second}`
-                    }else{
-                        seconds.textContent = second
-                    }
-                if(second === 0){
-                    minute25--
-                    second = 60
-                    if(minute25 >= 0 && minute25 < 10){
-                        focusTime.textContent = `0${minute25}`
-                    }else{
-                        focusTime.textContent = minute25
-                    }
-                    if(minute25 < 0){
-                        focusTime.textContent = '00'
-                        clearInterval(secondInterval)
-                    }
+
+btn25.addEventListener('click', ()=>{
+    isClicked25 = true
+    isClicked5 = false
+    isClicked15 = false
+    btn25.disabled = true
+    btn5.disabled = true
+    btn15.disabled = true
+
+    if(isClicked25){
+        const focusTime = document.querySelector("#minute")
+        const seconds = document.querySelector("#second")
+        let minute25 = 24
+        let second = 59
+           
+        const secondInterval = setInterval(() => {
+            second--
+            if (minute25 >= 0 && minute25 < 10) {
+                focusTime.textContent = `0${minute25}`
+            } else {
+                focusTime.textContent = minute25
+            }
+            if (second >= 0 && second < 10) {
+                seconds.textContent = `0${second}`
+            } else {
+                seconds.textContent = second
+            }
+            if (second === 0) {
+                minute25--
+                second = 60
+                if (minute25 >= 0 && minute25 < 10) {
+                    focusTime.textContent = `0${minute25}`
+                } else {
+                    focusTime.textContent = minute25
                 }
-            }, 1000)
-        }else if(btn[i].value === '5'){
-            const shortBrake = document.querySelector("#minute")
-            const seconds = document.querySelector("#second")
-            let minute5 = 4
-            let second = 59
-
-            const secondInterval = setInterval(()=>{
-                second--
-                if(minute5 >= 0 && minute5 < 10){
-                        shortBrake.textContent = `0${minute5}`
-                    }else{
-                        shortBrake.textContent = minute5
-                    }
-                if(second >= 0 && second < 10){
-                        seconds.textContent = `0${second}`
-                    }else{
-                        seconds.textContent = second
-                    }
-                if(second === 0){
-                    minute5--
-                    second = 60
-                    if(minute5 >= 0 && minute5 < 10){
-                        shortBrake.textContent = `0${minute5}`
-                    }else{
-                        shortBrake.textContent = minute5
-                    }
-                    if(minute5 < 0){
-                        shortBrake.textContent = '00'
-                        clearInterval(secondInterval)
-                    }
+                if (minute25 < 0) {
+                    focusTime.textContent = '00'
+                    clearInterval(secondInterval)
+                    btn25.disabled = false
+                    btn5.disabled = false
+                    btn15.disabled = false
                 }
-            }, 1000)
-        }else if(btn[i].value === '15'){
-            const longBrake = document.querySelector("#minute")
-            const seconds = document.querySelector("#second")
-            let minute15 = 14
-            let second = 59
+            }
+        }, 1000)
+    }
+})
 
-            const secondInterval = setInterval(()=>{
-                second--
-                if(minute15 >= 0 && minute15 < 10){
-                        longBrake.textContent = `0${minute15}`
-                    }else{
-                        longBrake.textContent = minute15
-                    }
-                if(second >= 0 && second < 10){
-                        seconds.textContent = `0${second}`
-                    }else{
-                        seconds.textContent = second
-                    }
-                if(second === 0){
-                    minute15--
-                    second = 60
-                    if(minute15 >= 0 && minute15 < 10){
-                        longBrake.textContent = `0${minute15}`
-                    }else{
-                        longBrake.textContent = minute15
-                    }
-                    if(minute15 < 0){
-                        longBrake.textContent = '00'
-                        clearInterval(secondInterval)
-                    }
+btn5.addEventListener('click', ()=>{
+    isClicked25 = false
+    isClicked5 = true
+    isClicked15 = false
+    btn25.disabled = true
+    btn5.disabled = true
+    btn15.disabled = true
+
+    if(isClicked5){
+        const focusTime = document.querySelector("#minute")
+        const seconds = document.querySelector("#second")
+        let minute5 = 4
+        let second = 59
+    
+        const secondInterval = setInterval(() => {
+            second--
+            if (minute5 >= 0 && minute5 < 10) {
+                focusTime.textContent = `0${minute5}`
+            } else {
+                focusTime.textContent = minute5
+            }
+            if (second >= 0 && second < 10) {
+                seconds.textContent = `0${second}`
+            } else {
+                seconds.textContent = second
+            }
+            if (second === 0) {
+                minute5--
+                second = 60
+                if (minute5 >= 0 && minute5 < 10) {
+                    focusTime.textContent = `0${minute5}`
+                } else {
+                    focusTime.textContent = minute5
                 }
-            }, 1000)
-        }
-    })
-}
+                if (minute5 < 0) {
+                    focusTime.textContent = '00'
+                    clearInterval(secondInterval)
+                    btn25.disabled = false
+                    btn5.disabled = false
+                    btn15.disabled = false
+                }
+            }
+        }, 1000)
+    }
+})
+
+btn15.addEventListener('click', ()=>{
+    isClicked25 = false
+    isClicked5 = false
+    isClicked15 = true
+    btn25.disabled = true
+    btn5.disabled = true
+    btn15.disabled = true
+
+    if(isClicked15){
+        const focusTime = document.querySelector("#minute")
+        const seconds = document.querySelector("#second")
+        let minute15 = 14
+        let second = 59
+    
+        const secondInterval = setInterval(() => {
+            second--
+            if (minute15 >= 0 && minute15 < 10) {
+                focusTime.textContent = `0${minute15}`
+            } else {
+                focusTime.textContent = minute15
+            }
+            if (second >= 0 && second < 10) {
+                seconds.textContent = `0${second}`
+            } else {
+                seconds.textContent = second
+            }
+            if (second === 0) {
+                minute15--
+                second = 60
+                if (minute15 >= 0 && minute15 < 10) {
+                    focusTime.textContent = `0${minute15}`
+                } else {
+                    focusTime.textContent = minute15
+                }
+                if (minute15 < 0) {
+                    focusTime.textContent = '00'
+                    clearInterval(secondInterval)
+                    btn25.disabled = false
+                    btn5.disabled = false
+                    btn15.disabled = false
+                }
+            }
+        }, 1000)
+    }
+})
 
 
 
