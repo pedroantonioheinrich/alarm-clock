@@ -17,12 +17,12 @@ btn25.addEventListener('click', ()=>{
     btn15.disabled = true
 
     if(isClicked25){
-        btn25.style.backgroundColor = 'grey'
-        btn25.style.cursor = 'wait'
-        btn5.style.backgroundColor = 'grey'
-        btn5.style.cursor = 'wait'
-        btn15.style.backgroundColor = 'grey'
-        btn15.style.cursor = 'wait'
+        btn25.style.border = '4px solid green'
+        btn25.style.backgroundColor = 'green'
+        btn5.style.border = '4px solid red'
+        btn5.style.backgroundColor = 'red'
+        btn15.style.border = '4px solid red'
+        btn15.style.backgroundColor = 'red'
         const focusTime = document.querySelector("#minute")
         const seconds = document.querySelector("#second")
         let minute25 = 24
@@ -72,12 +72,12 @@ btn5.addEventListener('click', ()=>{
     btn15.disabled = true
 
     if(isClicked5){
-        btn25.style.backgroundColor = 'grey'
-        btn25.style.cursor = 'wait'
-        btn5.style.backgroundColor = 'grey'
-        btn5.style.cursor = 'wait'
-        btn15.style.backgroundColor = 'grey'
-        btn15.style.cursor = 'wait'
+        btn25.style.border = '4px solid red'
+        btn25.style.backgroundColor = 'red'
+        btn5.style.border = '4px solid green'
+        btn5.style.backgroundColor = 'green'
+        btn15.style.border = '4px solid red'
+        btn15.style.backgroundColor = 'red'
         const focusTime = document.querySelector("#minute")
         const seconds = document.querySelector("#second")
         let minute5 = 4
@@ -127,12 +127,12 @@ btn15.addEventListener('click', ()=>{
     btn15.disabled = true
 
     if(isClicked15){
-        btn25.style.backgroundColor = 'grey'
-        btn25.style.cursor = 'wait'
-        btn5.style.backgroundColor = 'grey'
-        btn5.style.cursor = 'wait'
-        btn15.style.backgroundColor = 'grey'
-        btn15.style.cursor = 'wait'
+        btn25.style.border = '4px solid red'
+        btn25.style.backgroundColor = 'red'
+        btn5.style.border = '4px solid red'
+        btn5.style.backgroundColor = 'red'
+        btn15.style.border = '4px solid green'
+        btn15.style.backgroundColor = 'green'
         const focusTime = document.querySelector("#minute")
         const seconds = document.querySelector("#second")
         let minute15 = 14
