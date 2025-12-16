@@ -7,6 +7,7 @@ let isClicked25 = false
 let isClicked5 = false
 let isClicked15 = false
 
+const alarm = new Audio('alarm.wav')
 
 btn25.addEventListener('click', ()=>{
     isClicked25 = true
@@ -41,15 +42,10 @@ btn25.addEventListener('click', ()=>{
                 seconds.textContent = second
             }
             if (second === 0) {
-                minute25--
-                second = 60
-                if (minute25 >= 0 && minute25 < 10) {
-                    focusTime.textContent = `0${minute25}`
-                } else {
-                    focusTime.textContent = minute25
-                }
-                if (minute25 < 0) {
+                if (second === 0 && minute25 === 0) {
+                    alarm.play()
                     focusTime.textContent = '00'
+                    seconds.textContent = '00'
                     clearInterval(secondInterval)
                     btn25.disabled = false
                     btn5.disabled = false
@@ -58,6 +54,8 @@ btn25.addEventListener('click', ()=>{
                     isClicked25 = false
                     isClicked15 = false
                 }
+                minute25--
+                second = 60
             }
         }, 1000)
     }
@@ -96,15 +94,10 @@ btn5.addEventListener('click', ()=>{
                 seconds.textContent = second
             }
             if (second === 0) {
-                minute5--
-                second = 60
-                if (minute5 >= 0 && minute5 < 10) {
-                    focusTime.textContent = `0${minute5}`
-                } else {
-                    focusTime.textContent = minute5
-                }
-                if (minute5 < 0) {
+                if (second === 0 && minute5 === 0) {
+                    alarm.play()
                     focusTime.textContent = '00'
+                    seconds.textContent = '00'
                     clearInterval(secondInterval)
                     btn25.disabled = false
                     btn5.disabled = false
@@ -113,10 +106,14 @@ btn5.addEventListener('click', ()=>{
                     isClicked25 = false
                     isClicked15 = false
                 }
+                minute5--
+                second = 60
             }
         }, 1000)
     }
 })
+
+// 15 MINUTOS
 
 btn15.addEventListener('click', ()=>{
     isClicked25 = false
@@ -151,15 +148,10 @@ btn15.addEventListener('click', ()=>{
                 seconds.textContent = second
             }
             if (second === 0) {
-                minute15--
-                second = 60
-                if (minute15 >= 0 && minute15 < 10) {
-                    focusTime.textContent = `0${minute15}`
-                } else {
-                    focusTime.textContent = minute15
-                }
-                if (minute15 < 0) {
+                if (second === 0 && minute15 === 0) {
+                    alarm.play()
                     focusTime.textContent = '00'
+                    seconds.textContent = '00'
                     clearInterval(secondInterval)
                     btn25.disabled = false
                     btn5.disabled = false
@@ -168,6 +160,8 @@ btn15.addEventListener('click', ()=>{
                     isClicked25 = false
                     isClicked15 = false
                 }
+                minute15--
+                second = 60
             }
         }, 1000)
     }
