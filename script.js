@@ -23,54 +23,52 @@ btnPause.addEventListener('click', ()=>{
     }
 })
 
-function clockRun(dispMin, dispSec, btn, btn2, btn3, min, sec, clicked, alarm){
+function clockRun(dispMin, dispSec, btn, btn2, btn3, min, sec, alarm){
     btn.disabled = true
     btn2.disabled = true
     btn3.disabled = true
 
-    if(clicked){
-        btn.style.border = '4px solid green'
-        btn.style.backgroundColor = 'green'
-        btn2.style.border = '4px solid red'
-        btn2.style.backgroundColor = 'red'
-        btn3.style.border = '4px solid red'
-        btn3.style.backgroundColor = 'red'
+    btn.style.border = '4px solid green'
+    btn.style.backgroundColor = 'green'
+    btn2.style.border = '4px solid red'
+    btn2.style.backgroundColor = 'red'
+    btn3.style.border = '4px solid red'
+    btn3.style.backgroundColor = 'red'
 
-        const secondInterval = setInterval(() => {
-            sec--
-            if (min >= 0 && min < 10) {
-                dispMin.textContent = `0${min}`
-            } else {
-                dispMin.textContent = min
+    const secondInterval = setInterval(() => {
+        sec--
+        if (min >= 0 && min < 10) {
+            dispMin.textContent = `0${min}`
+        } else {
+            dispMin.textContent = min
+        }
+        if (sec >= 0 && sec < 10) {
+            dispSec.textContent = `0${sec}`
+        } else {
+            dispSec.textContent = sec
+        }
+        if (sec === 0) {
+            if (sec === 0 && min === 0) {
+                alarm.play()
+                dispMin.textContent = '00'
+                dispSec.textContent = '00'
+                clearInterval(secondInterval)
+                btn.disabled = false
+                btn2.disabled = false
+                btn3.disabled = false
             }
-            if (sec >= 0 && second < 10) {
-                dispSec.textContent = `0${sec}`
-            } else {
-                dispSec.textContent = sec
-            }
-            if (sec === 0) {
-                if (sec === 0 && min === 0) {
-                    alarm.play()
-                    dispMin.textContent = '00'
-                    dispSec.textContent = '00'
-                    clearInterval(secondInterval)
-                    btn.disabled = false
-                    btn2.disabled = false
-                    btn3.disabled = false
-                }
-                min--
-                sec = 60
-            }
-        }, 1000)
-    }
+            min--
+            sec = 60
+        }
+    }, 1000)  
 }
 
 btn25.addEventListener('click', ()=>{
-    clockRun(minutes, seconds, btn25, btn5, btn15, 24, 59, true, alarm)
+    clockRun(minutes, seconds, btn25, btn5, btn15, 24, 59, alarm)
 })
 btn15.addEventListener('click', ()=>{
-    clockRun(minutes, seconds, btn15, btn25, btn5, 14, 59, true, alarm)
+    clockRun(minutes, seconds, btn15, btn25, btn5, 14, 59, alarm)
 })
 btn5.addEventListener('click', ()=>{
-    clockRun(minutes, seconds, btn5, btn25, btn15, 4, 59, true, alarm)
+    clockRun(minutes, seconds, btn5, btn25, btn15, 4, 59, alarm)
 })
