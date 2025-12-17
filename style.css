@@ -17,7 +17,7 @@ body{
 }
 
 .main-container{
-    height: 550px;
+    height: 580px;
     width: 800px;
     background-color: rgb(243, 199, 4);
     display: flex;
@@ -50,7 +50,7 @@ body{
     gap: 3px;
 }
 .btn{
-    height: 90px;
+    height: 100px;
     width: 235px;
     cursor: pointer;
     border-radius: 5px;

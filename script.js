@@ -2,170 +2,78 @@
 const btn25 = document.getElementById("btn-25")
 const btn5 = document.getElementById("btn-5")
 const btn15 = document.getElementById("btn-15")
+const btnPause = document.getElementById("pause")
+const minutes = document.querySelector("#minute")
+const seconds = document.querySelector("#second")
 
 let isClicked25 = false
 let isClicked5 = false
 let isClicked15 = false
+let isPaused = false
+
+btnPause.textContent = 'Pause'
 
 const alarm = new Audio('alarm.wav')
 
+btnPause.addEventListener('click', ()=>{
+    if(isPaused){
+        isPaused = false
+        btnPause.textContent = 'Pause'
+
+    }else{
+        isPaused = true
+        btnPause.textContent = 'Play'
+    }
+})
+
+function clockRun(dispMin, dispSec, btn, btn2, btn3, min, sec, clicked, alarm){
+    btn.disabled = true
+    btn2.disabled = true
+    btn3.disabled = true
+
+    if(clicked){
+        btn.style.border = '4px solid green'
+        btn.style.backgroundColor = 'green'
+        btn2.style.border = '4px solid red'
+        btn2.style.backgroundColor = 'red'
+        btn3.style.border = '4px solid red'
+        btn3.style.backgroundColor = 'red'
+
+        const secondInterval = setInterval(() => {
+            sec--
+            if (min >= 0 && min < 10) {
+                dispMin.textContent = `0${min}`
+            } else {
+                dispMin.textContent = min
+            }
+            if (sec >= 0 && second < 10) {
+                dispSec.textContent = `0${sec}`
+            } else {
+                dispSec.textContent = sec
+            }
+            if (sec === 0) {
+                if (sec === 0 && min === 0) {
+                    alarm.play()
+                    dispMin.textContent = '00'
+                    dispSec.textContent = '00'
+                    clearInterval(secondInterval)
+                    btn.disabled = false
+                    btn2.disabled = false
+                    btn3.disabled = false
+                }
+                min--
+                sec = 60
+            }
+        }, 1000)
+    }
+}
+
 btn25.addEventListener('click', ()=>{
-    isClicked25 = true
-    isClicked5 = false
-    isClicked15 = false
-    btn25.disabled = true
-    btn5.disabled = true
-    btn15.disabled = true
-
-    if(isClicked25){
-        btn25.style.border = '4px solid green'
-        btn25.style.backgroundColor = 'green'
-        btn5.style.border = '4px solid red'
-        btn5.style.backgroundColor = 'red'
-        btn15.style.border = '4px solid red'
-        btn15.style.backgroundColor = 'red'
-        const focusTime = document.querySelector("#minute")
-        const seconds = document.querySelector("#second")
-        let minute25 = 24
-        let second = 59
-           
-        const secondInterval = setInterval(() => {
-            second--
-            if (minute25 >= 0 && minute25 < 10) {
-                focusTime.textContent = `0${minute25}`
-            } else {
-                focusTime.textContent = minute25
-            }
-            if (second >= 0 && second < 10) {
-                seconds.textContent = `0${second}`
-            } else {
-                seconds.textContent = second
-            }
-            if (second === 0) {
-                if (second === 0 && minute25 === 0) {
-                    alarm.play()
-                    focusTime.textContent = '00'
-                    seconds.textContent = '00'
-                    clearInterval(secondInterval)
-                    btn25.disabled = false
-                    btn5.disabled = false
-                    btn15.disabled = false
-                    isClicked5 = false
-                    isClicked25 = false
-                    isClicked15 = false
-                }
-                minute25--
-                second = 60
-            }
-        }, 1000)
-    }
+    clockRun(minutes, seconds, btn25, btn5, btn15, 24, 59, true, alarm)
 })
-
-btn5.addEventListener('click', ()=>{
-    isClicked25 = false
-    isClicked5 = true
-    isClicked15 = false
-    btn25.disabled = true
-    btn5.disabled = true
-    btn15.disabled = true
-
-    if(isClicked5){
-        btn25.style.border = '4px solid red'
-        btn25.style.backgroundColor = 'red'
-        btn5.style.border = '4px solid green'
-        btn5.style.backgroundColor = 'green'
-        btn15.style.border = '4px solid red'
-        btn15.style.backgroundColor = 'red'
-        const focusTime = document.querySelector("#minute")
-        const seconds = document.querySelector("#second")
-        let minute5 = 4
-        let second = 59
-    
-        const secondInterval = setInterval(() => {
-            second--
-            if (minute5 >= 0 && minute5 < 10) {
-                focusTime.textContent = `0${minute5}`
-            } else {
-                focusTime.textContent = minute5
-            }
-            if (second >= 0 && second < 10) {
-                seconds.textContent = `0${second}`
-            } else {
-                seconds.textContent = second
-            }
-            if (second === 0) {
-                if (second === 0 && minute5 === 0) {
-                    alarm.play()
-                    focusTime.textContent = '00'
-                    seconds.textContent = '00'
-                    clearInterval(secondInterval)
-                    btn25.disabled = false
-                    btn5.disabled = false
-                    btn15.disabled = false
-                    isClicked5 = false
-                    isClicked25 = false
-                    isClicked15 = false
-                }
-                minute5--
-                second = 60
-            }
-        }, 1000)
-    }
-})
-
-// 15 MINUTOS
-
 btn15.addEventListener('click', ()=>{
-    isClicked25 = false
-    isClicked5 = false
-    isClicked15 = true
-    btn25.disabled = true
-    btn5.disabled = true
-    btn15.disabled = true
-
-    if(isClicked15){
-        btn25.style.border = '4px solid red'
-        btn25.style.backgroundColor = 'red'
-        btn5.style.border = '4px solid red'
-        btn5.style.backgroundColor = 'red'
-        btn15.style.border = '4px solid green'
-        btn15.style.backgroundColor = 'green'
-        const focusTime = document.querySelector("#minute")
-        const seconds = document.querySelector("#second")
-        let minute15 = 14
-        let second = 59
-    
-        const secondInterval = setInterval(() => {
-            second--
-            if (minute15 >= 0 && minute15 < 10) {
-                focusTime.textContent = `0${minute15}`
-            } else {
-                focusTime.textContent = minute15
-            }
-            if (second >= 0 && second < 10) {
-                seconds.textContent = `0${second}`
-            } else {
-                seconds.textContent = second
-            }
-            if (second === 0) {
-                if (second === 0 && minute15 === 0) {
-                    alarm.play()
-                    focusTime.textContent = '00'
-                    seconds.textContent = '00'
-                    clearInterval(secondInterval)
-                    btn25.disabled = false
-                    btn5.disabled = false
-                    btn15.disabled = false
-                    isClicked5 = false
-                    isClicked25 = false
-                    isClicked15 = false
-                }
-                minute15--
-                second = 60
-            }
-        }, 1000)
-    }
+    clockRun(minutes, seconds, btn15, btn25, btn5, 14, 59, true, alarm)
 })
-
-
-
+btn5.addEventListener('click', ()=>{
+    clockRun(minutes, seconds, btn5, btn25, btn15, 4, 59, true, alarm)
+})
