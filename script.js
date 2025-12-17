@@ -8,21 +8,25 @@ const alarm = new Audio('alarm.wav')
 
 // TODO IMPLANTAR A LOGICA DO BOTAO DE PAUSA...
 
-// let isPaused = false
-// btnPause.textContent = 'Pause'
+let isPaused = false
+btnPause.textContent = 'Pause'
 
+let minPause = 0
+let secPause = 0
 
-
-// btnPause.addEventListener('click', ()=>{
-//     if(isPaused){
-//         isPaused = false
-//         btnPause.textContent = 'Pause'
-
-//     }else{
-//         isPaused = true
-//         btnPause.textContent = 'Play'
-//     }
-// })
+btnPause.addEventListener('click', ()=>{
+    if(isPaused){
+        isPaused = false
+        btnPause.textContent = 'Pause'
+        minPause = 0
+        secPause = 0
+    }else{
+        isPaused = true
+        btnPause.textContent = 'Play'
+        minutes.textContent = minPause
+        seconds.textContent = secPause
+    }
+})
 
 function clockRun(dispMin, dispSec, btn, btn2, btn3, min, sec, alarm){
     btn.disabled = true
