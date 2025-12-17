@@ -6,9 +6,6 @@ const btnPause = document.getElementById("pause")
 const minutes = document.querySelector("#minute")
 const seconds = document.querySelector("#second")
 
-let isClicked25 = false
-let isClicked5 = false
-let isClicked15 = false
 let isPaused = false
 
 btnPause.textContent = 'Pause'
