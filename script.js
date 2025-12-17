@@ -1,27 +1,28 @@
-
 const btn25 = document.getElementById("btn-25")
 const btn5 = document.getElementById("btn-5")
 const btn15 = document.getElementById("btn-15")
 const btnPause = document.getElementById("pause")
 const minutes = document.querySelector("#minute")
 const seconds = document.querySelector("#second")
-
-let isPaused = false
-
-btnPause.textContent = 'Pause'
-
 const alarm = new Audio('alarm.wav')
 
-btnPause.addEventListener('click', ()=>{
-    if(isPaused){
-        isPaused = false
-        btnPause.textContent = 'Pause'
+// TODO IMPLANTAR A LOGICA DO BOTAO DE PAUSA...
 
-    }else{
-        isPaused = true
-        btnPause.textContent = 'Play'
-    }
-})
+// let isPaused = false
+// btnPause.textContent = 'Pause'
+
+
+
+// btnPause.addEventListener('click', ()=>{
+//     if(isPaused){
+//         isPaused = false
+//         btnPause.textContent = 'Pause'
+
+//     }else{
+//         isPaused = true
+//         btnPause.textContent = 'Play'
+//     }
+// })
 
 function clockRun(dispMin, dispSec, btn, btn2, btn3, min, sec, alarm){
     btn.disabled = true
