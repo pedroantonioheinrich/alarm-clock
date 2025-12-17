@@ -1,79 +1,104 @@
-const btn25 = document.getElementById("btn-25")
-const btn5 = document.getElementById("btn-5")
-const btn15 = document.getElementById("btn-15")
-const btnPause = document.getElementById("pause")
-const minutes = document.querySelector("#minute")
-const seconds = document.querySelector("#second")
-const alarm = new Audio('alarm.wav')
-
-// TODO IMPLANTAR A LOGICA DO BOTAO DE PAUSA...
-
+const BTN25 = document.getElementById("btn-25")
+const BTN5 = document.getElementById("btn-5")
+const BTN15 = document.getElementById("btn-15")
+const BTN_PAUSE = document.getElementById("pause")
+const MINUTES = document.querySelector("#minute")
+const SECONDS = document.querySelector("#second")
+const ALARM = new Audio('alarm.wav')
+const ZERAR = document.getElementById('zerar')
+let pausedMin = 0
+let pausedSec = 0
 let isPaused = false
-btnPause.textContent = 'Pause'
 
-let minPause = 0
-let secPause = 0
+ZERAR.addEventListener('click', ()=>{
+    window.location.reload()
+})
 
-btnPause.addEventListener('click', ()=>{
-    if(isPaused){
-        isPaused = false
-        btnPause.textContent = 'Pause'
-        minPause = 0
-        secPause = 0
-    }else{
-        isPaused = true
-        btnPause.textContent = 'Play'
-        minutes.textContent = minPause
-        seconds.textContent = secPause
+BTN_PAUSE.textContent = 'Pause'
+
+
+BTN_PAUSE.addEventListener('click', ()=>{
+    if(pausedMin != 0 && pausedSec != 0){
+        if(isPaused){
+            isPaused = false
+            BTN_PAUSE.textContent = 'Pause'
+            BTN_PAUSE.style.backgroundColor = '#fff'
+            BTN_PAUSE.style.fontWeight = 'bold'
+            clockRun(MINUTES, SECONDS, BTN25, BTN5, BTN15, pausedMin, pausedSec, ALARM)
+        }else{
+            isPaused = true
+            BTN_PAUSE.style.backgroundColor = '#ffe75d'
+            BTN_PAUSE.style.color = 'rgb(29, 29, 29)'
+            BTN_PAUSE.style.fontWeight = 'bold'
+            BTN_PAUSE.textContent = 'Run'
+            MINUTES.textContent = minPause
+            SECONDS.textContent = secPause
+        }
     }
 })
+
+function isReallyPaused(bool){
+    return bool
+}
 
 function clockRun(dispMin, dispSec, btn, btn2, btn3, min, sec, alarm){
     btn.disabled = true
     btn2.disabled = true
     btn3.disabled = true
 
-    btn.style.border = '4px solid green'
-    btn.style.backgroundColor = 'green'
-    btn2.style.border = '4px solid red'
-    btn2.style.backgroundColor = 'red'
-    btn3.style.border = '4px solid red'
-    btn3.style.backgroundColor = 'red'
+    btn.style.color = 'rgb(29, 29, 29)'
+    btn.style.fontWeight = 'bold'
+    btn.style.backgroundColor = '#82ff63'
 
+    btn2.style.color = 'rgb(29, 29, 29)'
+    btn2.style.fontWeight = 'bold'
+    btn2.style.backgroundColor = '#ff6363'
+
+    btn3.style.backgroundColor = '#ff6363'
+    btn3.style.color = 'rgb(29, 29, 29)'
+    btn3.style.fontWeight = 'bold'
+    
     const secondInterval = setInterval(() => {
-        sec--
-        if (min >= 0 && min < 10) {
-            dispMin.textContent = `0${min}`
-        } else {
-            dispMin.textContent = min
-        }
-        if (sec >= 0 && sec < 10) {
-            dispSec.textContent = `0${sec}`
-        } else {
-            dispSec.textContent = sec
-        }
-        if (sec === 0) {
-            if (sec === 0 && min === 0) {
-                alarm.play()
-                dispMin.textContent = '00'
-                dispSec.textContent = '00'
-                clearInterval(secondInterval)
-                btn.disabled = false
-                btn2.disabled = false
-                btn3.disabled = false
+        if(isReallyPaused(isPaused)){
+            clearInterval(secondInterval)
+        }else{
+            sec--
+            if (min >= 0 && min < 10) {
+                dispMin.textContent = `0${min}`
+            } else {
+                dispMin.textContent = min
             }
-            min--
-            sec = 60
-        }
+            if (sec >= 0 && sec < 10) {
+                dispSec.textContent = `0${sec}`
+            } else {
+                dispSec.textContent = sec
+            }
+            if (sec === 0) {
+                if (sec === 0 && min === 0) {
+                    alarm.play()
+                    dispMin.textContent = '00'
+                    dispSec.textContent = '00'
+                    clearInterval(secondInterval)
+                    btn.disabled = false
+                    btn2.disabled = false
+                    btn3.disabled = false
+                }
+                min--
+                sec = 60
+            }
+            pausedMin = min
+            pausedSec = sec
+            console.log(`${sec} TRABALHA, VAGABUNDO!`)
+        }  
     }, 1000)  
 }
 
-btn25.addEventListener('click', ()=>{
-    clockRun(minutes, seconds, btn25, btn5, btn15, 24, 59, alarm)
+BTN25.addEventListener('click', ()=>{
+    clockRun(MINUTES, SECONDS, BTN25, BTN5, BTN15, 24, 59, ALARM)
 })
-btn15.addEventListener('click', ()=>{
-    clockRun(minutes, seconds, btn15, btn25, btn5, 14, 59, alarm)
+BTN15.addEventListener('click', ()=>{
+    clockRun(MINUTES, SECONDS, BTN15, BTN25, BTN5, 14, 59, ALARM)
 })
-btn5.addEventListener('click', ()=>{
-    clockRun(minutes, seconds, btn5, btn25, btn15, 4, 59, alarm)
+BTN5.addEventListener('click', ()=>{
+    clockRun(MINUTES, SECONDS, BTN5, BTN25, BTN15, 4, 59, ALARM)
 })
